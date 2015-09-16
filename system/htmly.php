@@ -9,7 +9,11 @@ if (config('timezone')) {
 } else {
     date_default_timezone_set('Asia/Jakarta');
 }
-
+if (config('languagelocale')) {
+	setlocale(LC_ALL, config('languagelocale'));
+} else	{
+	setlocale(LC_ALL, 'en_EN');
+} 
 // The front page of the blog
 get('/index', function () {
 
@@ -78,12 +82,12 @@ post('/login', function () {
             config('views.root', 'system/admin/views');
 
             render('login', array(
-                'title' => 'Login - ' . blog_title(),
-                'description' => 'Login page on ' . blog_title(),
+                'title' => msglanguage('_login').' - ' . blog_title(),
+                'description' => msglanguage('_loginpage').' ' . blog_title(),
                 'canonical' => site_url(),
                 'error' => '<ul>' . $log . '</ul>',
                 'bodyclass' => 'editprofile',
-                'breadcrumb' => '<a href="' . site_url() . '">' . config('breadcrumb.home') . '</a> &#187; Login'
+                'breadcrumb' => '<a href="' . site_url() . '">' . config('breadcrumb.home') . '</a> &#187; '.msglanguage('_login')
             ));
         }
     } else {
@@ -104,14 +108,14 @@ post('/login', function () {
         config('views.root', 'system/admin/views');
 
         render('login', array(
-            'title' => 'Login - ' . blog_title(),
-            'description' => 'Login page on ' . blog_title(),
+            'title' => msglanguage('_login').' - ' . blog_title(),
+            'description' => msglanguage('_loginpage').' '. blog_title(),
             'canonical' => site_url(),
             'error' => '<ul>' . $message['error'] . '</ul>',
             'username' => $user,
             'password' => $pass,
             'bodyclass' => 'editprofile',
-            'breadcrumb' => '<a href="' . site_url() . '">' . config('breadcrumb.home') . '</a> &#187; Login'
+            'breadcrumb' => '<a href="' . site_url() . '">' . config('breadcrumb.home') . '</a> &#187; '.msglanguage('_login')
         ));
     }
 });
