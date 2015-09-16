@@ -103,9 +103,9 @@
                     <div class="section-inner">
                         <!-- Tab nav -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#recent-posts" aria-controls="recent-posts" role="tab" data-toggle="tab">Recent Posts</a></li>
+                            <li role="presentation" class="active"><a href="#recent-posts" aria-controls="recent-posts" role="tab" data-toggle="tab"><?php echo msglanguage("_recentposts");?></a></li>
                             <?php if (config('views.counter') === 'true') :?>
-                            <li role="presentation"><a href="#popular-posts" aria-controls="popular-posts" role="tab" data-toggle="tab">Popular Posts</a></li>
+                            <li role="presentation"><a href="#popular-posts" aria-controls="popular-posts" role="tab" data-toggle="tab"><?php echo msglanguage("_popularpost");?></a></li>
                             <?php endif;?>
                         </ul>
                         <!-- Tab content -->
@@ -120,7 +120,7 @@
                                         <h3 class="title"><a href="<?php echo $l->url;?>"><?php echo $recentTitle;?></a></h3>
                                         <div class="content">
                                         <p><?php echo shorten($l->body, 75); ?>...</p>
-                                        <a class="more-link" href="<?php echo $l->url;?>"><i class="fa fa-link"></i> Read more</a>
+                                        <a class="more-link" href="<?php echo $l->url;?>"><i class="fa fa-link"></i><?php echo msglanguage("_readmore");?></a>
                                         </div><!--//content-->
                                     </div>
                                 <?php endforeach;?>
