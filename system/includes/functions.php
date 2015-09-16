@@ -1391,10 +1391,10 @@ function tab($p)
     $role = user('role', $user);
     if (isset($p->author)) {
         if ($user === $p->author || $role === 'admin') {
-            echo '<div class="tab"><ul class="nav nav-tabs"><li role="presentation" class="active"><a href="' . $p->url . '">View</a></li><li><a href="' . $p->url . '/edit?destination=post">Edit</a></li></ul></div>';
+            echo '<div class="tab"><ul class="nav nav-tabs"><li role="presentation" class="active"><a href="' . $p->url . '">'.msglanguage("_view").'</a></li><li><a href="' . $p->url . '/edit?destination=post">'.msglanguage("_edit").'</a></li></ul></div>';
         }
     } else {
-        echo '<div class="tab"><ul class="nav nav-tabs"><li role="presentation" class="active"><a href="' . $p->url . '">View</a></li><li><a href="' . $p->url . '/edit?destination=post">Edit</a></li></ul></div>';
+        echo '<div class="tab"><ul class="nav nav-tabs"><li role="presentation" class="active"><a href="' . $p->url . '">'.msglanguage("_view").'</a></li><li><a href="' . $p->url . '/edit?destination=post">'.msglanguage("_edit").'</a></li></ul></div>';
     }
 }
 
