@@ -4,6 +4,12 @@ site.url = ""
 ; Your timezone
 timezone = "Asia/Jakarta"
 
+; mik-start
+; language;
+language       = "en"
+languagelocale = "en_EN"
+; mik-end
+
 ; Blog info
 blog.title = "HTMLy"
 blog.tagline = "Just another HTMLy blog"
