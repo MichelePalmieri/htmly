@@ -24,22 +24,22 @@
                             $i++; ?>
                             <li class="<?php echo $class; ?>">
                                 <span><a href="<?php echo $p->url ?>"><?php echo $p->title ?></a></span> on
-                                <span><?php echo date('d F Y', $p->date) ?></span> - Posted in <span><?php echo $p->category ?></span>
+                                <span><?php echo strftime('%d %B %Y', $p->date);?></span> - <?php echo msglanguage("_postedin");?> <span><?php echo $p->category ?></span>
                             </li>
                         <?php endforeach; ?>
                     </ul>
                     <?php if (!empty($pagination['prev']) || !empty($pagination['next'])): ?>
                         <div class="pager">
                             <?php if (!empty($pagination['prev'])): ?>
-                                <span class="newer pull-left"><a class="btn btn-cta-secondary" href="?page=<?php echo $page - 1 ?>" rel="prev">Newer</a></span>
+                                <span class="newer pull-left"><a class="btn btn-cta-secondary" href="?page=<?php echo $page - 1 ?>" rel="prev"><?php echo msglanguage("_newer");?></a></span>
                             <?php endif; ?>
                             <?php if (!empty($pagination['next'])): ?>
-                                <span class="older pull-right"><a class="btn btn-cta-secondary" href="?page=<?php echo $page + 1 ?>" rel="next">Older</a></span>
+                                <span class="older pull-right"><a class="btn btn-cta-secondary" href="?page=<?php echo $page + 1 ?>" rel="next"><?php echo msglanguage("_older");?></a></span>
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
                 <?php } else {
-                    echo 'No posts found!';
+                     echo msglanguage("_noposts"); 
                 } ?>
             </div><!--//item-->
         </div><!--//content--> 
