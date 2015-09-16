@@ -59,8 +59,8 @@
                 <div class="info text-left">
                     <h2 class="title" itemprop="headline"><a href="<?php echo $p->url;?>"><?php echo $p->title;?></a></h2>
                     <p class="meta">
-                        <span class="date" itemprop="datePublished"><?php echo date('d F Y', $p->date) ?></span> - Posted in 
-                        <span itemprop="articleSection"><?php echo $p->category;?></span> by 
+                        <span class="date" itemprop="datePublished"><?php echo strftime('%d %B %Y', $p->date) ?></span> - <?php echo msglanguage("_postedin");?> 
+                        <span itemprop="articleSection"><?php echo $p->category;?></span> <?php echo msglanguage("_by");?> 
                         <span itemprop="author"><a href="<?php echo $p->authorUrl;?>"><?php echo $p->author;?></a></span>
                         <?php if (disqus_count()) { ?> 
                             with <span><i class="fa fa-comments"></i> <a href="<?php echo $p->url ?>#disqus_thread"> comments</a></span>
@@ -74,7 +74,7 @@
                 </div><!--//desc-->
                 <div style="position:relative;">
                    <?php if (config('teaser.type') === 'trimmed'):?>
-                       <span class="more"><a class="btn btn-cta-secondary" href="<?php echo $p->url;?>">Read more</a></span>
+                       <span class="more"><a class="btn btn-cta-secondary" href="<?php echo $p->url;?>"><?php echo msglanguage("_readmore"); ?></a></span>
                    <?php endif;?>
                     <span class="share pull-right">
                         <a target="_blank" class="first" href="https://www.facebook.com/sharer.php?u=<?php echo $p->url ?>&t=<?php echo $p->title ?>"><i class="fa fa-facebook"></i></a> 
@@ -91,10 +91,10 @@
 <?php if (!empty($pagination['prev']) || !empty($pagination['next'])): ?>
     <div class="pager">
         <?php if (!empty($pagination['prev'])): ?>
-            <span class="newer pull-left"><a class="btn btn-cta-secondary" href="?page=<?php echo $page - 1 ?>" rel="prev">Newer</a></span>
+            <span class="newer pull-left"><a class="btn btn-cta-secondary" href="?page=<?php echo $page - 1 ?>" rel="prev"><?php echo msglanguage("_newer");?></a></span>
         <?php endif; ?>
         <?php if (!empty($pagination['next'])): ?>
-            <span class="older pull-right"><a class="btn btn-cta-secondary" href="?page=<?php echo $page + 1 ?>" rel="next">Older</a></span>
+            <span class="older pull-right"><a class="btn btn-cta-secondary" href="?page=<?php echo $page + 1 ?>" rel="next"><?php echo msglanguage("_older");?></a></span>
         <?php endif; ?>
     </div>
 <?php endif; ?>
