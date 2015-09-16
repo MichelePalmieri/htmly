@@ -34,8 +34,8 @@
                 <div class="info text-left">
                     <h1 class="title" itemprop="headline"><?php echo $p->title;?></h1>
                     <p class="meta">
-                        <span class="date" itemprop="datePublished"><?php echo date('d F Y', $p->date) ?></span> - Posted in 
-                        <span itemprop="articleSection"><?php echo $p->category;?></span> by 
+                        <span class="date" itemprop="datePublished"><?php echo strftime('%d %B %Y', $p->date) ?></span> - <?php echo msglanguage("_postedin");?> 
+                        <span itemprop="articleSection"><?php echo $p->category;?></span> <?php echo msglanguage("_by");?> 
                         <span itemprop="author"><a href="<?php echo $p->authorUrl;?>"><?php echo $p->author;?></a></span>
                     </p>
                 </div>
@@ -59,10 +59,10 @@
                 <div style="margin-top:30px;position:relative;">
                     <hr>
                     <?php if (!empty($next)): ?>
-                        <span class="newer"><a href="<?php echo($next['url']); ?>" rel="next"><i class="fa fa-long-arrow-left"></i> Next Post</a></span>
+                        <span class="newer"><a href="<?php echo($next['url']); ?>" rel="next"><i class="fa fa-long-arrow-left"></i> <?php echo msglanguage("_nextpost");?></a></span>
                     <?php endif; ?>
                     <?php if (!empty($prev)): ?>
-                        <span class="older pull-right"><a href="<?php echo($prev['url']); ?>" rel="prev">Previous Post <i class="fa fa-long-arrow-right"></i></a></span>
+                        <span class="older pull-right"><a href="<?php echo($prev['url']); ?>" rel="prev"><?php echo msglanguage("_prevpost");?> <i class="fa fa-long-arrow-right"></i></a></span>
                     <?php endif; ?>
                     <div style="clear:both;"></div>
                 </div>
@@ -76,13 +76,13 @@
                 <?php $char = 30; $total = count($tags); $i = 1; if ($total >= 1) { ?>
                     <div class="related related-posts" style="margin-top:30px;position:relative;">
                         <hr>
-                        <h2 class="heading">Related Posts</h2>
+                        <h2 class="heading"><?php echo msglanguage("_relatedposts");?></h2>
                         <?php foreach ($tags as $t):?>
                             <div class="item col-md-4">
                                 <?php if (strlen(strip_tags($t->title)) > $char) { $relatedTitle = shorten($t->title, $char) . '...';} else {$relatedTitle = $t->title;}?>
                                 <h3 class="title"><a href="<?php echo $t->url;?>"><?php echo $relatedTitle;?></a></h3>
                                 <div class="content">
-                                    <p><?php echo shorten($t->body, 60); ?>... <a class="more-link" href="<?php echo $t->url;?>">more</a></p>
+                                    <p><?php echo shorten($t->body, 60); ?>... <a class="more-link" href="<?php echo $t->url;?>"><?php echo msglanguage("_more");?></a></p>
                                 </div><!--//content-->
                             </div>
                             <?php if ($i++ >= config('related.count')) break; ?>
